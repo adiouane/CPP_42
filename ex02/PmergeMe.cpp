@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:46:23 by adiouane          #+#    #+#             */
-/*   Updated: 2023/04/02 03:35:20 by adiouane         ###   ########.fr       */
+/*   Updated: 2023/04/02 04:50:46 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void ProgramMe_deque(std::deque<int> &d)
         }
 
         for (size_t i = 0; i < right.size(); i++)
-            left.insert(std::lower_bound(left.begin(), left.end(), right[i]), right[i]);
+        {
+            std::deque<int>::iterator it = std::lower_bound(left.begin(), left.end(), right[i]);
+            left.insert(it, right[i]);
+        }
 
         for (size_t i = 0; i < d.size(); i++)
             d[i] = left[i];
