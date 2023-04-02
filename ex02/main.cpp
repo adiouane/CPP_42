@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:46:19 by adiouane          #+#    #+#             */
-/*   Updated: 2023/04/01 02:07:37 by adiouane         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:35:55 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ int main(int argc, char **argv)
 {
     std::vector<int> v;
     std::deque<int> d;
+
+    for (int i = 1; i < argc; i++)
+        if (isdigit(argv[i][0]) == 0)
+        {
+            std::cout << "Error: Invalid argument" << std::endl;
+            return (1);
+        }
 
     for (int i = 1; i < argc; i++)
         v.push_back(atoi(argv[i]));
