@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:15:54 by adiouane          #+#    #+#             */
-/*   Updated: 2023/04/02 04:31:21 by adiouane         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:30:56 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: insufficient operands for '+'" << std::endl;
+                std::cerr << "Error: there is no operands for '+'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -43,7 +43,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: insufficient operands for '-'" << std::endl;
+                std::cerr << "Error: there is no operands for '-'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -56,7 +56,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: insufficient operands for '*'" << std::endl;
+                std::cerr << "Error: there is no operands for '*'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -69,7 +69,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: insufficient operands for '/'" << std::endl;
+                std::cerr << "Error: there is no operands for '/'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -87,7 +87,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: insufficient operands for '%'" << std::endl;
+                std::cerr << "Error: there is no operands for '%'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -103,8 +103,11 @@ void RPN(char *str[])
         }
         else if (str[1][i] == ' ')
             ;
-        else if (isdigit(str[1][i]) && str[1][i + 1] == '\0')
-            stack.push(str[1][i] - '0');
+        else if (isdigit(str[1][i]) && str[1][i + 1] == '\0' && stack.size() == 0)
+        {
+            std::cout << "Error " << std::endl;
+            return;
+        }
         else
         {
             std::cerr << "Error: invalid token '" << str[1][i] << "'" << std::endl;
@@ -114,7 +117,7 @@ void RPN(char *str[])
     }
     if (stack.size() > 1)
     {
-        std::cerr << "Error: insufficient operators" << std::endl;
+        std::cerr << "Error: there is no operators" << std::endl;
         return;
     }
     std::cout << stack.top() << std::endl;

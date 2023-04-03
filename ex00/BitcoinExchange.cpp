@@ -38,7 +38,10 @@ void BitcoinExchange(std::string file)
         while (getline(input_file, line))
         {
             if (line.empty())
+            {
+                std::cout << "Error: bad input => " << line << std::endl;
                 continue;
+            }
             if (strcmp(line.substr(0, 12).c_str(), "date | value") == 0)
                 continue;
             size_t pos = line.find('|');
