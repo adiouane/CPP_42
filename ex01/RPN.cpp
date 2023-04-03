@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:15:54 by adiouane          #+#    #+#             */
-/*   Updated: 2023/04/03 02:49:38 by adiouane         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:58:55 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,6 @@ void RPN(char *str[])
             int num1 = stack.top();
             stack.pop();
             stack.push(num1 / num2);
-        }
-        else if (str[1][i] == '%')
-        {
-            if (stack.size() < 2)
-            {
-                std::cout << "Error: there is no operands for '%'" << std::endl;
-                return;
-            }
-            int num2 = stack.top();
-            stack.pop();
-            if (num2 == 0)
-            {
-                std::cout << "Error: modulo by zero" << std::endl;
-                return;
-            }
-            int num1 = stack.top();
-            stack.pop();
-            stack.push(num1 % num2);
         }
         else if (str[1][i] == ' ')
             ;
