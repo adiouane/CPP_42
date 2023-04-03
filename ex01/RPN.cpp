@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:15:54 by adiouane          #+#    #+#             */
-/*   Updated: 2023/04/03 02:30:56 by adiouane         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:49:38 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void RPN(char *str[])
 
     if (str[1][0] == '\0')
     {
-        std::cerr << "Error: empty expression" << std::endl;
+        std::cout << "Error: empty expression" << std::endl;
         return;
     }
     while (str[1][i] != '\0')
@@ -30,7 +30,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: there is no operands for '+'" << std::endl;
+                std::cout << "Error: there is no operands for '+'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -43,7 +43,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: there is no operands for '-'" << std::endl;
+                std::cout << "Error: there is no operands for '-'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -56,7 +56,7 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: there is no operands for '*'" << std::endl;
+                std::cout << "Error: there is no operands for '*'" << std::endl;
                 return;
             }
             int num2 = stack.top();
@@ -69,14 +69,14 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: there is no operands for '/'" << std::endl;
+                std::cout << "Error: there is no operands for '/'" << std::endl;
                 return;
             }
             int num2 = stack.top();
             stack.pop();
             if (num2 == 0)
             {
-                std::cerr << "Error: division by zero" << std::endl;
+                std::cout << "Error: division by zero" << std::endl;
                 return;
             }
             int num1 = stack.top();
@@ -87,14 +87,14 @@ void RPN(char *str[])
         {
             if (stack.size() < 2)
             {
-                std::cerr << "Error: there is no operands for '%'" << std::endl;
+                std::cout << "Error: there is no operands for '%'" << std::endl;
                 return;
             }
             int num2 = stack.top();
             stack.pop();
             if (num2 == 0)
             {
-                std::cerr << "Error: modulo by zero" << std::endl;
+                std::cout << "Error: modulo by zero" << std::endl;
                 return;
             }
             int num1 = stack.top();
@@ -110,14 +110,14 @@ void RPN(char *str[])
         }
         else
         {
-            std::cerr << "Error: invalid token '" << str[1][i] << "'" << std::endl;
+            std::cout << "Error: invalid token '" << str[1][i] << "'" << std::endl;
             return;
         }
         i++;
     }
     if (stack.size() > 1)
     {
-        std::cerr << "Error: there is no operators" << std::endl;
+        std::cout << "Error: there is no operators" << std::endl;
         return;
     }
     std::cout << stack.top() << std::endl;
